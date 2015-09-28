@@ -4,7 +4,7 @@
 #
 Name     : kbproto
 Version  : 1.0.7
-Release  : 4
+Release  : 5
 URL      : http://xorg.freedesktop.org/releases/individual/proto/kbproto-1.0.7.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/kbproto-1.0.7.tar.bz2
 Summary  : KB extension headers
