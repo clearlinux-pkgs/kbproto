@@ -4,7 +4,7 @@
 #
 Name     : kbproto
 Version  : 1.0.7
-Release  : 7
+Release  : 8
 URL      : http://xorg.freedesktop.org/releases/individual/proto/kbproto-1.0.7.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/kbproto-1.0.7.tar.bz2
 Summary  : KB extension headers
@@ -23,6 +23,7 @@ and controls for text keyboards.
 %package dev
 Summary: dev components for the kbproto package.
 Group: Development
+Provides: kbproto-devel
 
 %description dev
 dev components for the kbproto package.
@@ -40,10 +41,15 @@ doc components for the kbproto package.
 %setup -q -n kbproto-1.0.7
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -60,7 +66,7 @@ rm -rf %{buildroot}
 /usr/include/X11/extensions/XKBproto.h
 /usr/include/X11/extensions/XKBsrv.h
 /usr/include/X11/extensions/XKBstr.h
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/kbproto.pc
 
 %files doc
 %defattr(-,root,root,-)
